@@ -3,5 +3,6 @@
 $soma = 0;
 
 for ($n = 1;$n<=100;$n++){
-    echo"Soma = " . $soma;
+    $soma+=$n;
 }
+    echo"Soma = " . $soma;
