@@ -9,4 +9,4 @@ foreach ($num as $valor) {
     $media = $soma / 10;
 }
     echo "Media aritimetica: " . $media;
-?
+?>
