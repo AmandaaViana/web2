@@ -2,8 +2,6 @@
 
 //GET
 
-
-
 echo "Parametro recebido: <br>";
   
   $cor= $_GET["cor"];
