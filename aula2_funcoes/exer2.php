@@ -20,7 +20,6 @@ echo "Para raio = $raio1:<br>";
 echo "Área: " . area($raio1) . "<br>";
 echo "Circunferência: " . circulo($raio1) . "<br><br>";
 
-
 echo "Para raio = $raio2:<br>";
 echo "Área: " . area($raio2) . "<br>";
 echo "Circunferencia: " . circulo($raio2) . "<br><br>";
@@ -28,5 +27,4 @@ echo "Circunferencia: " . circulo($raio2) . "<br><br>";
 echo "Para raio = $raio3:<br>";
 echo "Área: " . area($raio3) . "<br>";
 echo "Circunferencia: " . circulo($raio3) . "<br>";
-?>
 ?>
