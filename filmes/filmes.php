@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 //include_once("persistencia.php");
 
-//$filmes = buscarDados('filmes.json'); // TODO- buscar os livros ja salvos
+$filmes = buscarDados('filmes.json'); // TODO- buscar os livros ja salvos
 //print_r($livros);
 
 $msgErro = "";
@@ -70,9 +70,7 @@ if (isset($_POST['titulo'])) {
 </head>
 <body>
     <body>
-
     <h1>Cadastro de Filmes</h1>
-
     <h3>Cadastre seu Filme aqui</h3>
 
     <form method="post">
@@ -115,11 +113,11 @@ if (isset($_POST['titulo'])) {
 
         <?php foreach ($filmes as $f): ?>
             <tr>
-                <td><?php echo $l['id'] ?></td>
-                <td><?= $l['titulo'] ?></td>
-                <td><?= $l['diretor'] ?></td>
-                <td><?= $l['duraçao'] ?></td>
-                <td><?= $l['genero'] ?></td>
+                <td><?php echo $f['id'] ?></td>
+                <td><?= $f['titulo'] ?></td>
+                <td><?= $f['diretor'] ?></td>
+                <td><?= $f['duraçao'] ?></td>
+                <td><?= $f['genero'] ?></td>
                 <td>
                     <a href="excluir.php?id=<?= $f['id'] ?>"
                         onclick="return confirm('Confirma a exclusao?')">
