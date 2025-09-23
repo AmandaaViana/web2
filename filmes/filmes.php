@@ -3,7 +3,7 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-//include_once("persistencia.php");
+include_once("persistencia.php");
 
 $filmes = buscarDados('filmes.json'); // TODO- buscar os livros ja salvos
 //print_r($livros);
@@ -88,7 +88,7 @@ if (isset($_POST['titulo'])) {
             <option value="A" <?=  $genero == 'A' ? 'selected' : '' ?> >Ação</option>
             <option value="F" <?=  $genero == 'F' ? 'selected' : '' ?> >Ficção</option>
             <option value="S" <?=  $genero == 'S' ? 'selected' : '' ?> >Suspense</option>
-            <option value="T" <?=  $genero == 'T' ? 'selected' : '' ?> >Terror<</option>
+            <option value="T" <?=  $genero == 'T' ? 'selected' : '' ?> >Terror</option>
         </select>
         <br><br>
 
