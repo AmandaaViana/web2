@@ -5,8 +5,14 @@ error_reporting(E_ALL);
 
 include_once("persistencia.php");
 
-$filmes = buscarDados('filmes.json'); // TODO- buscar os livros ja salvos
-//print_r($livros);
+$filmes = buscarDados('filmes.json'); 
+
+$generos = [
+    "A" => "Ação",
+    "F" => "Ficção",
+    "S" => "Suspense",
+    "T" => "Terror"
+];
 
 $msgErro = "";
 $titulo = "";
@@ -38,10 +44,7 @@ if (isset($_POST['titulo'])) {
         array_push($erros,"Informe o genero!");
     } 
     
-
-    
     if(empty($erros)) {
-        //passou as validaçoes, salva no arquivo
         $filme = array(
             "id" => uniqid(),
             "titulo" => $titulo,
@@ -51,13 +54,11 @@ if (isset($_POST['titulo'])) {
         );
         array_push($filmes, $filme);
         salvarDados($filmes, "filmes.json");
-
-        header("location: filmes.php"); //forçar o recarregamento da pagina 
+        header("location: filmes.php"); 
     } else{
         $msgErro = implode("<br>" , $erros);
     }
 }
-
 
 ?>
 
@@ -72,14 +73,11 @@ if (isset($_POST['titulo'])) {
     <body>
     <h1>Cadastro de Filmes</h1>
     <h3>Cadastre seu Filme aqui</h3>
-
     <form method="post">
         <input name="titulo" placeholder="Informe o título" id="titulo" value="<?= $titulo ?>" />
         <br><br>
-
         <input name="diretor" placeholder="Informe o diretor" id="diretor" value="<?= $diretor ?>"/>
         <br><br>
-
         <input name="duraçao" placeholder="Duração do filme" id="duraçao" value="<?= $duraçao ?>"/>
         <br><br>
 
@@ -91,7 +89,6 @@ if (isset($_POST['titulo'])) {
             <option value="T" <?=  $genero == 'T' ? 'selected' : '' ?> >Terror</option>
         </select>
         <br><br>
-
         <input type="submit" value="Enviar" />
     </form>
 
@@ -117,7 +114,8 @@ if (isset($_POST['titulo'])) {
                 <td><?= $f['titulo'] ?></td>
                 <td><?= $f['diretor'] ?></td>
                 <td><?= $f['duraçao'] ?></td>
-                <td><?= $f['genero'] ?></td>
+                <td><?= $generos[$f['genero']] ?? $f['genero'] ?></td>
+
                 <td>
                     <a href="excluir.php?id=<?= $f['id'] ?>"
                         onclick="return confirm('Confirma a exclusao?')">
@@ -125,10 +123,7 @@ if (isset($_POST['titulo'])) {
                 </td>
             </tr>
         <?php endforeach; ?>
-
     </table>
-
     <script src="validacao.js"></script>
 </body>
-
 </html>
