@@ -57,7 +57,6 @@ if (isset($_POST['titulo'])) {
         $msgErro = implode("<br>" , $erros);
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +86,7 @@ if (isset($_POST['titulo'])) {
             <option value="T" <?=  $genero == 'T' ? 'selected' : '' ?> >Terror</option>
         </select>
         <br><br>
-        <input type="submit" value="Enviar" />
+        <input type="submit" value="Enviar"/>
     </form>
 
     <div id="divErro" style="color: red;">
@@ -122,6 +121,6 @@ if (isset($_POST['titulo'])) {
             </tr>
         <?php endforeach; ?>
     </table>
-    <script src="validacao.js"></script>
+    <script src="validar.js"></script>
 </body>
 </html>
