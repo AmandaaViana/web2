@@ -20,8 +20,11 @@ class Connection
                     //array associativo (campo => valor)
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
                 );
-                self::$conn = new PDO(
-                    "mysql:host=localhost;dbname=dbTimes","root", "bancodedados", $opcoes
+                self::$conn = new PDO( //http://localhost/phpmyadmin/
+                    "mysql:host=localhost;dbname=dbTimes",
+                    "root", //usuario
+                    "bancodedados",//senha
+                     $opcoes
                 );
             } catch (PDOException $e) {
                 echo $e->getMessage();
