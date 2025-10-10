@@ -9,6 +9,7 @@ $id = 0;
 if(isset($_GET['id']));
 $id = $_GET['id'];
 
+
 if($id <= 0){
     echo "ID para exclusao é invalida";
     exit;
@@ -20,5 +21,4 @@ $instrucao = $con->prepare($sql);
 $instrucao->execute([$id]);
 
 header("location: listar.php");
-
 ?>

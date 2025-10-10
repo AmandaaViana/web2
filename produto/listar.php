@@ -11,7 +11,7 @@ $result = $instrucao->fetchAll();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">    
+<html lang="pt-br">    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,12 +31,10 @@ $result = $instrucao->fetchAll();
             <tr>
                 <td> <?= $p['id'] ?> </td>
                 <td> <?= $p['descricao'] ?> </td>
-                <td> <?= $p['unidade_medida'] ?> </td>
+                <td> <?= $p['un_medida'] ?> </td>
                 <td>
                     <a href="excluir.php?id=<?= $p['id'] ?>" 
-                    onclick="return confirm('Confirma a exclusão?');">
-                    Excluir
-                    </a>
+                       onclick="return confirm('Confirma a exclusão?');">Excluir</a>
                 </td>
             </tr>
         <?php endforeach; ?>

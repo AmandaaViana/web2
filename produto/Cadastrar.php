@@ -8,11 +8,11 @@ if(!isset($_GET['descricao']) || !isset($_GET['unidade_medida'])){
 }
 
 $descricao = $_GET['descricao'];
-$unidade_medida = $_GET['unidade_medida'];
+$un_medida = $_GET['unidade_medida'];
 $con = Conexao::getConexao();
-$sql = "INSERT INTO produtos (descricao, unidade_medida) VALUES (?, ?)";
+$sql = "INSERT INTO produtos (descricao, un_medida) VALUES (?, ?)";
 $instrucao = $con->prepare($sql);
-$instrucao->execute(array($descricao, $unidade_medida));
+$instrucao->execute(array($descricao, $un_medida));
 
 header("location: listar.php");
 ?>
