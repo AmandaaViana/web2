@@ -23,8 +23,8 @@ include_once(__DIR__. "/../include/header.php");
         <th>Idade</th>
         <th>Estrangeiro</th>
         <th>Curso</th>
-        <th></th>
-        <th></th>
+        <th>Editar</th>
+        <th>Excluir</th>
     </tr>
 
     <!-- Dados -->
@@ -36,8 +36,16 @@ include_once(__DIR__. "/../include/header.php");
             <td><?= $a->getIdade() ?></td>
             <td><?= $a->getiEstrangeiro() ?></td>
             <td><?= $a->getCurso()->getNomeTurno() ?></td>
-            <td></td>
-            <td></td>
+            <td>
+                <a href="editar.php?id<?= $a->getId() ?>">
+                    <img src="../../img/btn_editar.png">
+                </a>
+            </td>
+            <td>
+                <a href="excluir.php?id<?= $a->getId() ?>">
+                    <img src="../../img/btn_excluir.png">
+                </a>
+            </td>
         </tr>
     <?php endforeach; ?>
 

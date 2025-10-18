@@ -45,6 +45,23 @@ class AlunoDao{
         }
         return $alunos;
     }
+
+    public function insert(Aluno $aluno){
+        
+        try{
+        $sql = "INSERT INTO alunos
+                (nome,idade,estrangeiro,id_curso)
+                VALUES (?, ?, ?, ?)";
+        $stm = $this->conn->prepare($sql);
+        $stm->execute(array($aluno->getNome(),
+                            $aluno->getIdade(),
+                            $aluno->getEstrangeiro(),
+                            $aluno->getCurso()->getId()));
+        }catch(PDOException $e){
+            die($e->getMessage());
+        }
+
+    }
 }
 
 ?>

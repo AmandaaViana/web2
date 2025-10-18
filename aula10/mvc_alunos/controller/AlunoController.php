@@ -14,6 +14,11 @@ class AlunoController{
     public function listar(){
         return $this->alunoDao->list();
     }
+
+    public function inserir(Aluno $aluno){//metodo chama o inserir
+        $this->alunoDao->insert($aluno);
+
+    }
 }
 
 ?>

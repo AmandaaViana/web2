@@ -1,4 +1,11 @@
 <?php
+
+include_once(__DIR__ ."/../../controller/CursoController.php");
+//carregar a lista de cursos
+$cursoCont = new CursoController();
+$cursos = $cursoCont->listar();
+//print_r($cursos);
+
 include_once(__DIR__. "/../include/header.php");
 ?>
 
@@ -31,6 +38,14 @@ include_once(__DIR__. "/../include/header.php");
         <label for="selCurso">Curso:</label>
         <select name="curso" id="selCurso">
             <option value="">----Selecione----</option>
+            
+            <?php foreach($cursos as $c):?>
+            <option value="<?= $c->getId(); ?>">
+                    <?= $c->getNomeTurno() ?>
+            </option>
+
+            <?php endforeach; ?>
+            
         </select>
     </div>
 
