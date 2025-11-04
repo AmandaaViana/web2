@@ -23,12 +23,19 @@ class AlunoController{
     }
 
     public function inserir(Aluno $aluno){//metodo chama o inserir
-        
         $erros = $this->alunoServise->validar($aluno);
         if(! $erros)
             $this->alunoDao->insert($aluno);
         return $erros;
     }
+
+    public function editar(Aluno $aluno){
+        $erros = $this->alunoServise->validar($aluno);
+        if(! $erros)
+            $this->alunoDao->update($aluno);
+        return $erros;
+    }
+
     public function excluir(int $id) {
         $this->alunoDao->delete($id);
     }

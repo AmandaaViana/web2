@@ -2,12 +2,13 @@
 
 include_once(__DIR__ . "/../model/Aluno.php");
 
-class AlunoService
-{
-    public function validar(Aluno $aluno)
-    {
+class AlunoService{
+
+    public function validar(Aluno $aluno){
         $erros = array();
+
         //validar se o nome foi preenchido
+        //if(! $aluno->getNome()) é outra forma de fazer
         if ($aluno->getNome() == NULL)
             array_push($erros, "Informe o nome!");
 
@@ -19,6 +20,7 @@ class AlunoService
 
         if ($aluno->getCurso() == NULL)
             array_push($erros, "Informe o curso!");
+        
         return $erros;
     }
 }

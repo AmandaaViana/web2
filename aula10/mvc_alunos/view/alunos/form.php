@@ -1,6 +1,7 @@
 <?php
 
 include_once(__DIR__ ."/../../controller/CursoController.php");
+
 //carregar a lista de cursos
 $cursoCont = new CursoController();
 $cursos = $cursoCont->listar();
@@ -9,7 +10,7 @@ $cursos = $cursoCont->listar();
 include_once(__DIR__. "/../include/header.php");
 ?>
 
-<h3><?= $aluno && $aluno->getId() > 0 ? 'Editar' : 'Inserir' ?> Inserir aluno</h3>
+<h3><?= $aluno && $aluno->getId() > 0 ? 'Editar' : 'Inserir' ?> aluno</h3>
 
 <form method="POST" action="">
 
@@ -41,18 +42,15 @@ include_once(__DIR__. "/../include/header.php");
         <select name="curso" id="selCurso">
             <option value="">----Selecione----</option>
             
-            <?php foreach($cursos as $c):?>
+            <?php foreach($cursos as $c): ?>
             <option value="<?= $c->getId(); ?>"
                 <?php if($aluno && $aluno->getCurso()&& $aluno->getCurso()->getId() == $c->getId())
                     echo "selected";
-                    
                     ?>
             >
                     <?= $c->getNomeTurno() ?>
             </option>
-
             <?php endforeach; ?>
-            
         </select>
     </div>
 

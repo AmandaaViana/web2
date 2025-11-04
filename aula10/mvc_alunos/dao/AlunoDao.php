@@ -6,13 +6,13 @@ include_once(__DIR__. "/../model/Aluno.php");
 class AlunoDao{
 
     private PDO $conn;
+
     public function __construct()
     {
         $this->conn = Connection::getConnection();
     }
 
     public function list(){
-        
         $sql = "SELECT a.*, c.nome nome_curso, c.turno turno_curso
                 FROM alunos a
                 JOIN cursos c ON (c.id = a.id_curso)";
@@ -22,6 +22,59 @@ class AlunoDao{
 
         return $this->map($result);
 
+    }
+
+    public function findById(int $id){
+        
+        $sql = "SELECT a.*, c.nome nome_curso, c.turno turno_curso
+                FROM alunos a
+                JOIN cursos c ON (c.id = a.id_curso)
+                WHERE a.id = ?";
+        $stm = $this->conn->prepare($sql);
+        $stm->execute([$id]);
+        $result = $stm->fetchAll();
+
+        $alunos = $this->map($result);
+
+        if(count($alunos) == 1)
+            return $alunos[0];
+        return NULL;
+
+    }
+
+    public function insert(Aluno $aluno){
+        
+        try{
+        $sql = "INSERT INTO alunos
+                (nome,idade,estrangeiro,id_curso)
+                VALUES (?, ?, ?, ?)";
+                
+        $stm = $this->conn->prepare($sql);
+        $stm->execute(array($aluno->getNome(),
+                            $aluno->getIdade(),
+                            $aluno->getEstrangeiro(),
+                            $aluno->getCurso()->getId()));
+        }catch(PDOException $e){
+            die($e->getMessage());
+        }
+
+    }
+
+    public function update(Aluno $aluno) {
+        try {
+            $sql = "UPDATE alunos 
+                    SET nome = ?, idade = ?, 
+                        estrangeiro = ?, id_curso = ? 
+                    WHERE id = ?";
+            $stm = $this->conn->prepare($sql);
+            $stm->execute(array($aluno->getNome(), 
+                                $aluno->getIdade(),
+                                $aluno->getEstrangeiro(), 
+                                $aluno->getCurso()->getId(),
+                                $aluno->getId()));
+        } catch(PDOException $e) {
+            die($e->getMessage());
+        }                   
     }
 
     public function delete(int $id) {
@@ -57,41 +110,7 @@ class AlunoDao{
         return $alunos;
     }
 
-    public function findById(int $id){
-        
-        $sql = "SELECT a.*, c.nome nome_curso, c.turno turno_curso
-                FROM alunos a
-                JOIN cursos c ON (c.id = a.id_curso)
-                WHERE a.id = ?";
-        $stm = $this->conn->prepare($sql);
-        $stm->execute([$id]);
-        $result = $stm->fetchAll();
 
-        $alunos = $this->map($result);
-
-        if(count($alunos) == 1)
-            return $alunos[0];
-        return NULL;
-
-    }
-
-
-    public function insert(Aluno $aluno){
-        
-        try{
-        $sql = "INSERT INTO alunos
-                (nome,idade,estrangeiro,id_curso)
-                VALUES (?, ?, ?, ?)";
-        $stm = $this->conn->prepare($sql);
-        $stm->execute(array($aluno->getNome(),
-                            $aluno->getIdade(),
-                            $aluno->getEstrangeiro(),
-                            $aluno->getCurso()->getId()));
-        }catch(PDOException $e){
-            die($e->getMessage());
-        }
-
-    }
 }
 
 ?>
