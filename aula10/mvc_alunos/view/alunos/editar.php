@@ -21,7 +21,7 @@ if(isset($_POST['nome'])){
     $aluno->setId($id);
     $aluno->setNome($nome);
     $aluno->setIdade($idade);
-    $aluno->setEstrangeiro($estrang);
+    $aluno->setEstrangeiro($estrangeiro);
 
     if($idCurso) {
         $curso = new Curso();

@@ -9,3 +9,6 @@ define("DB_HOST", "localhost");
 define("DB_NAME", "mvc_alunos");
 define("DB_USER", "root");
 define("DB_PASSWORD", "bancodedados");
+
+//configurar a url do sistema
+define("URL_BASE", "/web2/aula10/mvc_alunos");
