@@ -1,3 +1,4 @@
+</div>
 </div><!-- Fecha o container que foi aberto no index, listar -->
 <footer class="bg-light text-muted mt-3">
     <div class="text-center p-4">

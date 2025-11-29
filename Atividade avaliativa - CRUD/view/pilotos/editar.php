@@ -15,12 +15,14 @@ if (isset($_POST['nome'])) {
     $idEquipe = trim($_POST['equipe']) ? trim($_POST['equipe']) : NULL;
     $idMontadora = trim($_POST['montadora']) ? trim($_POST['montadora']) : NULL;
     $idSeries = trim($_POST['series']) ? trim($_POST['series']) : NULL;
+    $vitorias = is_numeric($_POST['vitorias']) ? $_POST['vitorias'] : NULL;
 
     //Criar um objeto aluno
     $piloto = new Piloto();
     $piloto->setId($id);
     $piloto->setNome($nome);
     $piloto->setIdade($idade);
+    $piloto->setVitorias($vitorias);
 
     if ($idEquipe) {
         $equipe = new Equipe();

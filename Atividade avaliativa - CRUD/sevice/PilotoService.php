@@ -22,6 +22,9 @@ class PilotoService{
         if ($piloto->getSeries() == NULL)
             array_push($erros, "Informe a Series!");
 
+        if ($piloto->getVitorias() == NULL)
+            array_push($erros, "Informe as Vitorias!");
+
         return $erros;
     }
 }

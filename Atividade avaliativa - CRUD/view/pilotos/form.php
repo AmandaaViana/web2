@@ -85,6 +85,13 @@ include_once(__DIR__ . "/../include/menu.php");
                     </select>
                 </div>
 
+                <div class="mb-3">
+                    <label for="txtVitorias" class="form-label">Vitorias:</label>
+                    <input type="number" id="txtVitorias" name="vitorias" placeholder="Total de vitorias:"
+                        value="<?= $piloto ? $piloto->getVitorias() : '' ?>"
+                        class="form-control">
+                </div>
+
                 <input type="hidden" value="<?= $piloto ? $piloto->getId() : 0 ?>" name="id">
 
                 <div class="mt-2">

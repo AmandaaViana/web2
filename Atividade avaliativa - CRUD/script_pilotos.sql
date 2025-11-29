@@ -43,3 +43,5 @@ VALUES ('NASCAR Cup Series'),
        ('NASCAR Xfinity Series'),
        ('NASCAR Truck Series'),
        ('ARCA Menards Series');
+
+ALTER TABLE piloto ADD COLUMN vitorias INT NOT NULL DEFAULT 0;

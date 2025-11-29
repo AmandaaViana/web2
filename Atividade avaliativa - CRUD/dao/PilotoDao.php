@@ -13,15 +13,16 @@ class PilotoDao{
 
     public function insert(Piloto $piloto){
         try{
-            $sql = "INSERT INTO piloto (nome, idade, id_equipe, id_montadora, id_series) 
-                    VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO piloto (nome, idade, id_equipe, id_montadora, id_series, vitorias) 
+                    VALUES (?, ?, ?, ?, ?, ?)";
             
             $stm = $this->conn->prepare($sql);
             $stm->execute(array($piloto->getNome(),
                                 $piloto->getIdade(),
                                 $piloto->getEquipe()->getId(),
                                 $piloto->getMontadora()->getId(),
-                                $piloto->getSeries()->getId()));          
+                                $piloto->getSeries()->getId(),
+                                $piloto->getVitorias()));          
         }catch(PDOException $e){
             die($e->getMessage());
         }
@@ -30,7 +31,7 @@ class PilotoDao{
     public function update(Piloto $piloto){
         try{
             $sql = "UPDATE piloto
-                    SET nome = ?, idade = ?, id_equipe = ?, id_montadora = ?, id_series = ?
+                    SET nome = ?, idade = ?, id_equipe = ?, id_montadora = ?, id_series = ?, vitorias = ?
                     WHERE id = ?";
             $stm = $this->conn->prepare($sql);
             $stm->execute(array($piloto->getNome(),
@@ -38,6 +39,7 @@ class PilotoDao{
                                 $piloto->getEquipe()->getId(),
                                 $piloto->getMontadora()->getId(),
                                 $piloto->getSeries()->getId(),
+                                $piloto->getVitorias(),
                                 $piloto->getId()));
         }catch(PDOException $e){
             die($e->getMessage());
@@ -101,10 +103,11 @@ class PilotoDao{
             $piloto->setId($r['id']);
             $piloto->setNome($r['nome']);
             $piloto->setIdade($r['idade']);
+            $piloto->setVitorias($r['vitorias']); 
 
             $equipe = new Equipe();
             $equipe->setId($r['id_equipe']);
-            $equipe->setNome($r['nome_equipe']);//se der erro olhar aqui
+            $equipe->setNome($r['nome_equipe']);
             $piloto->setEquipe($equipe);
 
             $montadora = new Montadora();

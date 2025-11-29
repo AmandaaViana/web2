@@ -25,6 +25,7 @@ include_once(__DIR__ . "/../include/menu.php");
             <th>Equipe</th>
             <th>Montadora</th>
             <th>Series</th>
+            <th>Vitorias</th>
             <th>Editar</th>
             <th>Excluir</th>
         </tr>
@@ -39,6 +40,8 @@ include_once(__DIR__ . "/../include/menu.php");
                 <td><?= $p->getEquipe()->getNome() ?></td>
                 <td><?= $p->getMontadora()->getNome() ?></td>
                 <td><?= $p->getSeries()->getNome() ?></td>
+                <td><?= $p->getVitorias() ?></td>
+
                 <td>
                     <a href="editar.php?id=<?= $p->getId() ?>">
                         <img src="../../img/btn_editar.png">
