@@ -27,6 +27,7 @@ class Clube implements JsonSerializable {
             "imagem" => $this->imagem
         );
     }
+
     /**
      * Get the value of id
      */ 
